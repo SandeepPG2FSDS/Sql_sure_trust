@@ -1,0 +1,69 @@
+SQL-ASSIGNMENT-1 
+
+--Emp and Dept
+
+select * from dept;
+
+select * from emp;
+
+1. select count(empno) Employee_Count from emp;
+
+2. select count(deptno) Department_Count from dept;
+
+3. select empno,ename Employee_name from emp;
+
+4. select deptno,dname Department_name from dept;
+
+5. select sum(sal) Total_salary_paid from emp;
+
+6. select sum(comm) Total_commission_paid from emp;
+
+7. select job,comm from emp where comm >0;
+
+8. select empno,hiredate System_date from emp;
+
+9. select avg(sal) Average_salary from emp;
+
+10. select deptno,count(deptno) Total_employees from emp group by deptno;
+
+11. select deptno,sum(sal) Total_salary from emp group by deptno;
+
+12. select job,count(job) Number_of_Employee from emp group by job;
+
+13. select job,avg(sal) Average_salary_of_department from emp group by job;
+
+14. select empno,ename,hiredate,to_char(hiredate,'Day') Hired_day,to_char(hiredate,'Month') Hired_month,to_char(hiredate,'YY') Hired_year from emp;
+
+15. select empno,ename,deptno from emp order by deptno;
+
+16. select empno,ename,job from emp order by job;
+
+17. select empno,ename,sal from emp order by sal;
+
+18. select empno,ename,deptno,sal from emp order by deptno asc,sal desc;
+
+19. select empno,ename from emp where length(ename)=6;
+
+20. select max(sal) Maximum_salary,min(sal) Minimum_salary from emp;
+
+21. select deptno,max(sal) Maximum_salary,min(sal) Minimum_salary,avg(sal) Average_salary,sum(sal) Total_salary from emp group by deptno;
+
+22. select empno,ename,hiredate from emp order by hiredate asc;
+
+23. select empno,ename,hiredate from emp order by hiredate desc;
+
+24. select empno,ename,hiredate from emp order by hiredate asc;
+
+25. select empno,ename,deptno,to_char(hiredate,'yy') Hire_year from emp order by to_char(hiredate,'yy') desc,deptno asc;
+
+26. select ename,sal Salary_more_than_average from emp where sal>=(select avg(sal) from emp);
+
+27. select ename,sal Salary_less_than_average from emp where sal<=(select avg(sal) from emp);
+
+28. select ename,sal from emp where sal between 2000 and 4000;
+
+29. select ename,sal Maximum_salary from emp where sal =(select max(sal) from emp);
+
+select ename,sal Minimum_salary from  emp where sal=(select min(sal)from emp);
+
+30. select empno,ename,to_char(hiredate,'Mon') Next_Birthday_month from emp where to_char(hiredate,'Mon')='Jan';
