@@ -1,0 +1,425 @@
+
+--CarDatabase
+
+select * from continents;
+
+select * from countries;
+
+select * from car_makers;
+
+select * from model_details;
+
+select * from car_names;
+
+select * from car_details;
+
+1,select d.continent as Continent_id,d.countryname,e.continent from  countries d left join continents e on d.continent=e.contid order by e.continent;
+
+
+
+2.select e.continent,count(d.countryname) as Number_of_countries from countries d left join continents e on d.continent=e.contid group by e.continent order by 1 asc;
+
+
+
+3.select d.countryname as Countries_with_No_car_makers from countries d left join car_makers e on d.countryid=e.country where e.maker is null;
+
+
+
+4.select e.maker as Car_makers_Japan from countries d left join car_makers e on d.countryid=e.country where d.countryname='japan';
+
+
+
+5.select e.maker as Car_makers_France_USA from countries d left join car_makers e on d.countryid=e.country where d.countryname ='france' or d.countryname='usa';
+
+
+
+6.select e.maker,d.countryname,f.continent from countries d left join car_makers e on d.countryid=e.country
+
+  left join continents f on d.continent=f.contid where e.maker='volvo';
+
+
+
+7.select descr as Ford_car_models from car_names where model='ford';
+
+
+
+8.select count(f.descr)  as Car_models_Germany from countries d left join car_makers e on d.countryid=e.country
+
+   left join car_names f on e.maker=f.model where countryname='germany';
+
+
+
+9.select e.fullname,f.descr as  Car_models_Germany from countries d left join car_makers e on d.countryid=e.country
+
+     left join car_names f on e.maker=f.model where countryname='japan';
+
+ 
+
+10.
+
+select h.mpg as HIGHEST_MPG, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.mpg = (select max(mpg) from car_details)
+
+order by h.mpg desc;
+
+ 
+
+select h.mpg as LOWEST_MPG, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.mpg = (select min(mpg) from car_details)
+
+order by h.mpg asc;
+
+ 
+
+select h.cylinders as HIGHEST_CYLINDERS, f.model , e.maker , e.fullname , d.countryname , c.continent from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.cylinders = (select max(cylinders) from car_details)
+
+order by h.cylinders desc;
+
+ 
+
+select h.cylinders as LOWEST_CYLINDERS, f.model , e.maker , e.fullname , d.countryname , c.continent from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.cylinders = (select min(cylinders) from car_details)
+
+order by h.cylinders asc;
+
+ 
+
+select h.edispl as HIGHEST_EDISPL, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.edispl = (select max(edispl) from car_details)
+
+order by h.edispl desc;
+
+ 
+
+select h.edispl as LOWEST_EDISPL, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.edispl = (select min(edispl) from car_details)
+
+order by h.edispl asc;
+
+ 
+
+ 
+
+select h.horsepower as HIGHEST_HORSEPOWER, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.horsepower = (select max(horsepower) from car_details)
+
+order by h.horsepower desc;
+
+ 
+
+select h.horsepower as LOWEST_HORSEPOWER, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.horsepower = (select min(horsepower) from car_details)
+
+order by h.horsepower asc;
+
+ 
+
+ 
+
+select h.weight as HIGHEST_WEIGHT, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.weight = (select max(weight) from car_details)
+
+order by h.weight desc;
+
+ 
+
+select h.weight as LOWEST_WEIGHT, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.weight = (select min(weight) from car_details)
+
+order by h.weight asc;
+
+ 
+
+ 
+
+select h.accel as HIGHEST_ACCEL, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.accel = (select max(accel) from car_details)
+
+order by h.accel asc;
+
+ 
+
+select h.accel as LOWEST_ACCEL, f.model , e.maker , e.fullname , d.countryname , c.continent
+
+from continents c
+
+left join countries d on c.contid = d.continent
+
+left join car_makers e on d.countryid = e.country
+
+left join model_details f on e.id = f.maker
+
+left join car_names g on f.model = g.model
+
+left join car_details h on g.id = h.id
+
+where h.accel = (select min(accel) from car_details)
+
+order by h.accel desc;
+
+ 
+
+ 
+
+11.select year,count(id) AS Year_with_High_cars from Car_Details Group by year
+
+Order by Year_with_High_cars desc;
+
+ 
+
+12.select year,count(id) AS Year_with_low_cars from Car_Details Group by year
+
+Order by Year_with_Low_cars asc;
+
+ 
+
+13.select min(mpg), max(mpg),avg(mpg),year mpg from car_details group by year;
+
+union all
+
+select min(cylinders), max(cylinders),avg(cylinders),year from car_details group by year;
+
+union all
+
+select min(edispl), max(edispl),avg(edispl),year from car_details group by year;
+
+union all
+
+select min(Horsepower), max(Horsepower),avg(Horsepower),year from car_details group by year;
+
+union all
+
+select  min(Weight), max(Weight),avg(Weight),year from car_details group by year;
+
+union all
+
+select min(Accel), max(Accel),avg(Accel),year from car_details group by year;
+
+ 
+
+14.select avg(horsepower) as Mean_value, median(horsepower) as Median_value,stddev(horsepower) as Stddev_value from Car_Details
+
+UNION ALL
+
+select avg(weight) AS Mean_value, MEDIAN(weight) AS Median_value, stddev(weight) AS Stddev_value from Car_Details
+
+UNION ALL
+
+select avg(accel) AS Mean_value, MEDIAN(accel) AS Median_value, stddev(accel) AS Stddev_value from Car_Details;
+
+ 
+
+15.Given the Car Database with six tables.
+
+-1.Continents:
+
+-ContID (Primary Key)
+
+-Continent
+
+ 
+
+2.Countries:
+
+-CountryID (Primary Key)
+
+-CountryName
+
+ 
+
+3.Continent (Foreign Key referencing Continents.ContID)
+
+-Car_Makers:
+
+-ID (Primary Key)
+
+-Maker
+
+-FullName
+
+-Country (Foreign Key referencing Countries.CountryID)
+
+    
+
+4.Model_Details:
+
+-ModelID (Primary Key)
+
+-Maker (Foreign Key referencing Car_Makers.ID)
+
+-Model
+
+    
+
+5.Car_Names:
+
+-ID (Primary Key)
+
+-Model (Foreign Key referencing Model_Details.Model)
+
+-Descr
+
+ 
+
+6.Car_Details:
+
+-ID (Primary Key)
+
+-mpg
+
+-cylinders
+
+-edispl
+
+-horsepower
+
+-weight
+
+-accel
+
+-year
+
+-ID (Foreign Key referencing car_names)
+
+ 
+
